@@ -42,7 +42,7 @@ class TransactionController extends ActiveController
 
     public function actionCreate(){
         // folder temp save uploaded file
-        $path = '/var/www/html/test/frontend/uploads/';
+        $path = 'uploads/';
         if(isset($_FILES['file'])){
             $file = $_FILES['file'];
             echo json_encode($file);
