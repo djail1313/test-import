@@ -16,7 +16,8 @@
         ],
     - execute command "composer update"
     - modify "backend/config/main-local.php" and "frontend/config/main-local.php".
-	insert secret key in the "cookieValidationKey"
+	   insert secret key in the "cookieValidationKey"
+    - Create directory "uploads" in "backend/web/"
     - Setup php.ini file
         find and replace "memory_limit" value to 512M
         find and replace "max_execution_time" value to 1000
