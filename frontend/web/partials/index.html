@@ -1,0 +1,66 @@
+<div class="jumbotron text-center">
+	<h1>Transactions Page</h1>
+</div>
+<div id="disable-div">
+	<form id="form-import">
+		<div class="form-group">
+			<label for="import-file">Import File</label>
+			<input type="file" id="import-file" file-reader="fileContent">
+			<p class="help-block">JSON or CSV format</p>
+		</div>
+		<div>{{fileContent}}</div>
+		<div class="form-group">
+			<input type="submit" id="submit-import">
+		</div>
+	</form>
+</div>
+<form class="form-inline">
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="searchID" ng-change="changeFilter()" placeholder="ID Transactions">
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="searchCustomer" ng-change="changeFilter()" placeholder="Customer Name">
+	</div>
+	<div class="form-group">
+		<input type="date" class="form-control" ng-model="searchDatePurchase" ng-change="changeFilter()" placeholder="Date Purchase" title="Date Purchase">
+	</div>
+</form>
+<div ng-show="transactions.length > 0">
+	<table ng-table="" class="table table-striped table-hover table-bordered table-grid">
+		<thead>
+			<th ng-click="sort('id')">ID <span id='id_' class="glyphicon"></span></th>
+			<th ng-click="sort('customer_name')">Customer Name <span class="glyphicon" id="customer_name_"></span></th>
+			<th ng-click="sort('date_purchase')">Date Purchase <span class="glyphicon" id="date_purchase_"></span></th>
+			<th ng-click="sort('amount_due')">Amount Due <span class="glyphicon" id="amount_due_"></span></th>
+			<th ng-click="sort('discount')">Discount <span class="glyphicon" id="discount_"></span></th>
+			<th ng-click="sort('gst')">GST <span id="gst_" class="glyphicon"></span></th>
+			<th ng-click="sort('total_price_before_disc')">Total Price Before Disc <span class="glyphicon" id="total_price_before_disc_"></span></th>
+			<th ng-click="sort('created_date')">Created Date <span class="glyphicon" id="created_date_"></span></th>
+			<th ng-click="sort('last_modified_date')">Last Modified Date <span class="glyphicon" id="last_modified_date_"></span></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in transactions">
+				<td>{{data.id}}</td>
+				<td>{{data.customer_name}}</td>
+				<td>{{data.date_purchase}}</td>
+				<td>{{data.amount_due}}</td>
+				<td>{{data.discount}}</td>
+				<td>{{data.gst}}</td>
+				<td>{{data.total_price_before_disc}}</td>
+				<td>{{data.created_date}}</td>
+				<td>{{data.last_modified_date}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<nav>
+		<ul class="pager">
+			<li class="previous" id="first-page"><a href="" ng-click="changePage('first-page')" page="1"><span aria-hidden="true">&larr;</span> First</a></li>
+			<li id="prev-page"><a href="" ng-click="changePage('prev-page')" page="1">Previous</a></li>
+			<li id="next-page"><a href="" ng-click="changePage('next-page')" page="1">Next</a></li>
+			<li class="next" id="last-page"><a href="" ng-click="changePage('last-page')" page="1">Last <span aria-hidden="true">&rarr;</span></a></li>
+		</ul>
+	</nav>
+</div>
+<div ng-show="transactions.length < 1">
+	Transactions Empty
+</div>
