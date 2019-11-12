@@ -1,6 +1,6 @@
 
 
-1. Setup Database
+1. Setup Database MySQL
     Import r_test.sql to local MySQL database.
 
 2. Setup Yii Project
